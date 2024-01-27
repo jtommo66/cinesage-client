@@ -1,0 +1,31 @@
+@use "../styles/partials/variables" as *;
+
+.header {
+  height: 40rem;
+
+  &__wrap {
+    background-color: $color-brand-dark;
+  }
+
+  &__logo-wrap {
+    height: 10%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  &__logo {
+    height: 15rem;
+    width: 15rem;
+  }
+
+  &__nav-wrap {
+    background-color: $color-brand-light;
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 0;
+  }
+
+  &__link {
+    color: $color-brand-dark;
+    text-decoration: none;
+  }
+}

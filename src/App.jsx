@@ -4,11 +4,12 @@ import Roulette from "./pages/Roulette/Roulette";
 import Home from "./pages/Home/Home";
 import SingleMovie from "./pages/SingleMovie/SingleMovie";
 import MovieList from "./pages/MovieList/MovieList";
+import Header from "./components/Header";
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <Header /> */}
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/roulette" element={<Roulette />} />
