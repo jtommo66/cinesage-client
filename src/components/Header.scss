@@ -1,8 +1,6 @@
 @use "../styles/partials/variables" as *;
 
 .header {
-  height: 40rem;
-
   &__wrap {
     background-color: $color-brand-dark;
   }
