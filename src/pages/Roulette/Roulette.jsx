@@ -1,6 +1,6 @@
 import "./Roulette.scss";
 
-const Roulette = () => {
+const RoulettePage = () => {
   return (
     <main className="roulette-page">
       <div className="roulette-page__container">
@@ -10,4 +10,4 @@ const Roulette = () => {
   );
 };
 
-export default Roulette;
+export default RoulettePage;

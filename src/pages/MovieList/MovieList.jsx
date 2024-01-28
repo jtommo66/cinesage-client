@@ -1,6 +1,6 @@
 import "./MovieList.scss";
 
-const MovieList = () => {
+const MovieListPage = () => {
   return (
     <main className="movie-list-page">
       <div className="movie-list-page__container">
@@ -10,4 +10,4 @@ const MovieList = () => {
   );
 };
 
-export default MovieList;
+export default MovieListPage;

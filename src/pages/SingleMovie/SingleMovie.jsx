@@ -1,13 +1,14 @@
 import "./SingleMovie.scss";
+import SingleMovie from "../../components/SingleMovie/SingleMovie";
 
-const SingleMovie = () => {
+const SingleMoviePage = () => {
   return (
     <main className="single-movie-page">
       <div className="single-movie-page__container">
-        <h1>"This is the single movie page"</h1>
+        <SingleMovie />
       </div>
     </main>
   );
 };
 
-export default SingleMovie;
+export default SingleMoviePage;

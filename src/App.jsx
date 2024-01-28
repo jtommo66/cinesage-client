@@ -1,9 +1,9 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Roulette from "./pages/Roulette/Roulette";
-import Home from "./pages/Home/Home";
-import SingleMovie from "./pages/SingleMovie/SingleMovie";
-import MovieList from "./pages/MovieList/MovieList";
+import RoulettePage from "./pages/Roulette/Roulette";
+import HomePage from "./pages/Home/Home";
+import SingleMoviePage from "./pages/SingleMovie/SingleMovie";
+import MovieListPage from "./pages/MovieList/MovieList";
 import Header from "./components/Header/Header";
 
 function App() {
@@ -11,10 +11,10 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/roulette" element={<Roulette />} />
-        <Route path="/movies/:id" element={<SingleMovie />} />
-        <Route path="/movies" element={<MovieList />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/roulette" element={<RoulettePage />} />
+        <Route path="/movies/:id" element={<SingleMoviePage />} />
+        <Route path="/movies" element={<MovieListPage />} />
       </Routes>
     </BrowserRouter>
   );
