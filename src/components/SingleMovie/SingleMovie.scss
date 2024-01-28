@@ -16,4 +16,18 @@
   &__info-wrap {
     width: 50%;
   }
+  &__title {
+    font-weight: 600;
+    margin-top: 0;
+  }
+  &__director {
+    font-weight: 500;
+  }
+  &__genre {
+    font-weight: 500;
+  }
+  &__description {
+    font-weight: 500;
+    margin: 0;
+  }
 }
