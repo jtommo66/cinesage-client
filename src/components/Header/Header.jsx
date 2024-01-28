@@ -1,5 +1,5 @@
 import "./Header.scss";
-import logo from "../assets/images/CineSage-logos.jpeg";
+import logo from "../../assets/images/CineSage-logos.jpeg";
 import { NavLink, Link } from "react-router-dom";
 
 function Header() {
