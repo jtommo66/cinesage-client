@@ -1,0 +1,19 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
+.single-movie {
+  background-color: $color-brand-dark;
+  color: $color-brand-light;
+
+  &__wrap {
+    display: flex;
+  }
+
+  &__image-wrap {
+    width: 50%;
+  }
+
+  &__info-wrap {
+    width: 50%;
+  }
+}
