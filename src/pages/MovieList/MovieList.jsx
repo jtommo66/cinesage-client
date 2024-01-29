@@ -1,10 +1,11 @@
 import "./MovieList.scss";
+import MovieList from "../../components/MovieList/MovieList";
 
 const MovieListPage = () => {
   return (
     <main className="movie-list-page">
       <div className="movie-list-page__container">
-        <h1>"This is the movie list page"</h1>
+        <MovieList />
       </div>
     </main>
   );
