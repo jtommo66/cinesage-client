@@ -4,10 +4,15 @@ function Reviews() {
   return (
     <div className="review-form__wrap">
       <form className="review-form">
-        <label>Add Your Review</label>
-        <textarea name="Review" id="Review" placeholder="Review"></textarea>
+        <label className="review-form__title">Add Your Review</label>
+        <textarea
+          className="review-form__input"
+          name="Review"
+          id="Review"
+          placeholder="Add a review"
+        ></textarea>
 
-        <button>Submit Review</button>
+        <button className="review-form__button">Post</button>
       </form>
     </div>
   );
