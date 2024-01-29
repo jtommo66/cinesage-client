@@ -1,6 +1,7 @@
 import "./SingleMovie.scss";
 import Reviews from "../Reviews/Reviews";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -30,11 +31,13 @@ function SingleMovie() {
     <main className="single-movie">
       <div className="single-movie__wrap">
         <div className="single-movie__image-wrap">
-          <img
-            className="single-movie__image"
-            src={singleMovie.image}
-            alt="movie poster"
-          />
+          <Link to={singleMovie.trailer} target="_blank">
+            <img
+              className="single-movie__image"
+              src={singleMovie.image}
+              alt="movie poster"
+            />
+          </Link>
         </div>
         <div className="single-movie__info-wrap">
           <h2 className="single-movie__title">{singleMovie.title} </h2>
