@@ -38,10 +38,26 @@ function SingleMovie() {
         </div>
         <div className="single-movie__info-wrap">
           <h2 className="single-movie__title">{singleMovie.title} </h2>
-          <h3 className="single-movie__director">
-            {singleMovie.director.join(" ")}
-          </h3>
-          <h3 className="single-movie__genre">{singleMovie.genre.join(" ")}</h3>
+          <div className="single-movie__inner-wrap">
+            <div className="single-movie__director-wrap">
+              {singleMovie.director.map((director, i) => {
+                return (
+                  <h3 key={i} className="single-movie__director">
+                    {director}
+                  </h3>
+                );
+              })}
+            </div>
+            <div className="single-movie__genre-wrap">
+              {singleMovie.genre.map((genre, i) => {
+                return (
+                  <h3 key={i} className="single-movie__genre">
+                    {genre}
+                  </h3>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
       <h3 className="single-movie__description">{singleMovie.synopsis}</h3>
