@@ -7,11 +7,14 @@
 
   &__logo-wrap {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    overflow: hidden;
   }
   &__logo {
-    height: 10rem;
-    width: 10rem;
+    object-fit: cover;
+    width: 100%;
   }
 
   &__nav-wrap {
