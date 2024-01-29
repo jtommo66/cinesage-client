@@ -7,6 +7,8 @@
 
   &__wrap {
     display: flex;
+    align-items: center;
+    padding: 0 1rem;
   }
 
   &__image-wrap {
@@ -23,15 +25,25 @@
   &__title {
     font-weight: 600;
     margin-top: 0;
+    margin-bottom: 0.5rem;
+    text-align: right;
   }
   &__director {
     font-weight: 500;
+    text-align: right;
+    margin: 0.5rem 0;
   }
   &__genre {
     font-weight: 500;
+    text-align: right;
+    margin: 0.5rem 0;
   }
   &__description {
     font-weight: 500;
-    margin: 0;
+    margin: 1rem;
+  }
+  &__reviews-wrap {
+    background-color: $color-brand-light;
+    color: $color-brand-dark;
   }
 }

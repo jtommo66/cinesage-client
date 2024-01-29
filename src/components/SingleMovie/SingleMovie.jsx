@@ -37,13 +37,15 @@ function SingleMovie() {
           />
         </div>
         <div className="single-movie__info-wrap">
-          <h2 className="single-movie__title">{singleMovie.title}</h2>
+          <h2 className="single-movie__title">{singleMovie.title} </h2>
           <h3 className="single-movie__director">{singleMovie.director}</h3>
           <h3 className="single-movie__genre">{singleMovie.genre}</h3>
         </div>
       </div>
       <h3 className="single-movie__description">{singleMovie.synopsis}</h3>
-      <Reviews />
+      <div className="single-movie__reviews-wrap">
+        <Reviews />
+      </div>
     </main>
   );
 }
