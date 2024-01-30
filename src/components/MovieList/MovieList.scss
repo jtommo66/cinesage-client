@@ -11,10 +11,19 @@
 
   &__movie {
     width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   &__movie-image {
     width: 100%;
+    overflow: hidden;
+  }
+
+  &__movie-image-wrap {
+    height: 80%;
+    object-fit: cover;
   }
 
   &__movie-title {
@@ -23,7 +32,13 @@
     color: $color-brand-light;
     font-weight: 400;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.7rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     overflow: hidden;
+  }
+
+  &__movie-title-wrap {
+    height: 20%;
   }
 }

@@ -1,9 +1,12 @@
 import "./SingleMovie.scss";
 import Reviews from "../Reviews/Reviews";
+// import TrailerPopup from "../TrailerPopup/TrailerPopup";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import React from "react";
+import Popup from "reactjs-popup";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -62,6 +65,21 @@ function SingleMovie() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="single-movie__trailer-wrap">
+        <Popup
+          trigger={<button className="button"> Trailer</button>}
+          position="top center"
+        >
+          <div className="trailer">
+            <iframe
+              className="trailer__window"
+              src={singleMovie.trailer}
+              title={singleMovie.title}
+              allowFullScreen
+            ></iframe>
+          </div>
+        </Popup>
       </div>
       <h3 className="single-movie__description">{singleMovie.synopsis}</h3>
       <div className="single-movie__reviews-wrap">

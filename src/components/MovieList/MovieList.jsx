@@ -4,7 +4,6 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 const API_URL = process.env.REACT_APP_API_URL;
-const URL = process.env.url;
 
 function MovieList() {
   const { movieId } = useParams();
@@ -30,14 +29,18 @@ function MovieList() {
     <main className="movie-list">
       {movieList.map((movie) => (
         <article key={movie.id} className="movie-list__movie">
-          <Link to={`/movies/${movie.id}`}>
-            <img
-              className="movie-list__movie-image"
-              src={movie.image}
-              alt="movie poster"
-            />
-          </Link>
-          <h2 className="movie-list__movie-title">{movie.title}</h2>
+          <div className="movie-list__movie-image-wrap">
+            <Link to={`/movies/${movie.id}`}>
+              <img
+                className="movie-list__movie-image"
+                src={movie.image}
+                alt="movie poster"
+              />
+            </Link>
+          </div>
+          <div className="movie-list__movie-title-wrap">
+            <h2 className="movie-list__movie-title">{movie.title}</h2>
+          </div>
         </article>
       ))}
     </main>
