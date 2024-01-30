@@ -30,6 +30,7 @@
     margin-top: 0;
     margin-bottom: 0.5rem;
     text-align: center;
+    font-size: 1rem;
   }
 
   &__inner-wrap {
@@ -48,6 +49,7 @@
     font-weight: 500;
     text-align: left;
     margin: 0.5rem 0;
+    font-size: 0.8rem;
   }
 
   &__genre-wrap {
@@ -60,6 +62,7 @@
     font-weight: 500;
     text-align: left;
     margin: 0.5rem 0;
+    font-size: 0.8rem;
   }
 
   &__trailer-wrap {
@@ -70,6 +73,7 @@
   &__description {
     font-weight: 500;
     margin: 1rem;
+    font-size: 0.8rem;
   }
   &__reviews-wrap {
     background-color: $color-brand-light;
