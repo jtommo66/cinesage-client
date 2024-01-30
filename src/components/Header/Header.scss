@@ -21,11 +21,12 @@
     background-color: $color-brand-light;
     display: flex;
     justify-content: space-around;
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 
   &__link {
     color: $color-brand-dark;
     text-decoration: none;
+    font-weight: 600;
   }
 }

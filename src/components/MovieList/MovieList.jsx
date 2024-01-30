@@ -1,6 +1,6 @@
 import "./MovieList.scss";
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -9,6 +9,7 @@ function MovieList() {
   const [movieList, setMovieList] = useState(null);
   const [genreList, setGenreList] = useState(null);
   const [keywordList, setKeywordList] = useState(null);
+  // const [selectedGenreList, setSelectedGenreList] = useState(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -36,6 +37,16 @@ function MovieList() {
         console.error(error);
       }
     };
+
+    // const selectedGenre = async () => {
+    //   try {
+    //     const genre = await axios.get(`${API_URL}/movie/genre/${params.genre}`);
+    //     setSelectedGenreList(genre.data);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
+
     fetchKeywords();
     fetchGenres();
     fetchMovies();
@@ -56,14 +67,24 @@ function MovieList() {
   return (
     <main className="movie-list">
       <div className="movie-list__filter-wrap">
-        <select id="genres" name="genres">
+        <select className="movie-list__filter-option" id="genres" name="genres">
+          <option key="blank-select" value="Select Genre">
+            Select Genre
+          </option>
           {genreList.map((genre) => (
             <option key={genre.id} value={genre.genre}>
               {genre.genre}
             </option>
           ))}
         </select>
-        <select id="keywords" name="keywords">
+        <select
+          className="movie-list__filter-option"
+          id="keywords"
+          name="keywords"
+        >
+          <option key="blank-select" value="Select Keyword">
+            Select Keyword
+          </option>
           {keywordList.map((keyword) => (
             <option key={keyword.id} value={keyword.keyword}>
               {keyword.keyword}
@@ -73,7 +94,7 @@ function MovieList() {
       </div>
       {movieList.map((movie) => (
         <article key={movie.id} className="movie-list__movie">
-          <div className="movie-list__movie-image-wrap">
+          <div>
             <Link to={`/movies/${movie.id}`}>
               <img
                 className="movie-list__movie-image"
