@@ -6,8 +6,9 @@ import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function MovieList() {
-  const { movieId } = useParams();
   const [movieList, setMovieList] = useState(null);
+  const [genreList, setGenreList] = useState(null);
+  const [keywordList, setKeywordList] = useState(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -18,15 +19,58 @@ function MovieList() {
         console.error(error);
       }
     };
+    const fetchGenres = async () => {
+      try {
+        const genres = await axios.get(`${API_URL}/genres`);
+        setGenreList(genres.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    const fetchKeywords = async () => {
+      try {
+        const keywords = await axios.get(`${API_URL}/keywords`);
+        setKeywordList(keywords.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchKeywords();
+    fetchGenres();
     fetchMovies();
-  }, [movieId]);
+  }, []);
 
   if (!movieList) {
     return <main>Finding Movies...</main>;
   }
 
+  if (!genreList) {
+    return <main>Finding Genres...</main>;
+  }
+
+  if (!keywordList) {
+    return <main>Finding Keywords...</main>;
+  }
+
   return (
     <main className="movie-list">
+      <div className="movie-list__filter-wrap">
+        <select id="genres" name="genres">
+          {genreList.map((genre) => (
+            <option key={genre.id} value={genre.genre}>
+              {genre.genre}
+            </option>
+          ))}
+        </select>
+        <select id="keywords" name="keywords">
+          {keywordList.map((keyword) => (
+            <option key={keyword.id} value={keyword.keyword}>
+              {keyword.keyword}
+            </option>
+          ))}
+        </select>
+      </div>
       {movieList.map((movie) => (
         <article key={movie.id} className="movie-list__movie">
           <div className="movie-list__movie-image-wrap">
