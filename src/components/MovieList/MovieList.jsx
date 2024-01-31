@@ -9,7 +9,7 @@ function MovieList() {
   const [movieList, setMovieList] = useState(null);
   const [genreList, setGenreList] = useState(null);
   const [keywordList, setKeywordList] = useState(null);
-  // const [selectedGenreList, setSelectedGenreList] = useState(null);
+  const [selectedGenreList, setSelectedGenreList] = useState(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -64,10 +64,30 @@ function MovieList() {
     return <main>Finding Keywords...</main>;
   }
 
+  const changeSelect = (event) => {
+    console.log(event.target.value);
+    setSelectedGenreList(event.target.value);
+  };
+
+  let genreSelected;
+
+  if (!selectedGenreList) {
+    genreSelected = movieList;
+  } else {
+    genreSelected = movieList.filter((movie) => {
+      return movie.genre.includes(selectedGenreList);
+    });
+  }
+
   return (
     <main className="movie-list">
       <div className="movie-list__filter-wrap">
-        <select className="movie-list__filter-option" id="genres" name="genres">
+        <select
+          className="movie-list__filter-option"
+          onChange={changeSelect}
+          id="genres"
+          name="genres"
+        >
           <option key="blank-select" value="Select Genre">
             Select Genre
           </option>
@@ -92,7 +112,7 @@ function MovieList() {
           ))}
         </select>
       </div>
-      {movieList.map((movie) => (
+      {genreSelected.map((movie) => (
         <article key={movie.id} className="movie-list__movie">
           <div>
             <Link to={`/movies/${movie.id}`}>
