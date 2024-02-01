@@ -1,3 +1,5 @@
-.roulette-page__container {
-  display: flex;
+@use "../../styles/partials/variables" as *;
+
+.roulette-page {
+  background-color: $color-brand-dark;
 }
