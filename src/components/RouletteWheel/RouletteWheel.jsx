@@ -105,9 +105,10 @@ function RouletteWheel() {
   const randomGenres = chooseRandom(genreList, 10);
   const randomKeywords = chooseRandom(keywordList, 10);
 
-  const rouletteDataAll = randomMovies.map((movie, i) => {
+  const rouletteDataAll = movieList.map((movie, i) => {
     return {
       option: movie.title,
+      genre: movie.genre,
       style: { backgroundColor: "maroon", textColor: "white", fontSize: 15 },
     };
   });
@@ -152,6 +153,72 @@ function RouletteWheel() {
     }
   };
 
+  const buildWheelSelector = (movie) => {
+    console.log(rouletteDataAll);
+    if (selectedGenreList) {
+      let filteredMovieList = rouletteDataAll.filter((movie) => {
+        return movie.genre.includes(selectedGenreList);
+      });
+
+      const randomFilteredMovies = chooseRandom(filteredMovieList, 10);
+      console.log(filteredMovieList);
+      // console.log("Hello");
+      return (
+        <div>
+          <Wheel
+            mustStartSpinning={mustSpin}
+            prizeNumber={prizeNumber}
+            data={randomFilteredMovies}
+          />
+          <button className="roulette__button" onClick={handleSpinClickKeyword}>
+            Spin the wheel!
+          </button>
+        </div>
+      );
+    }
+    // if (movie.genre.includes(selectedGenreList)) {
+    //   return (
+    //     <div>
+    //       <Wheel
+    //         mustStartSpinning={mustSpin}
+    //         prizeNumber={prizeNumber}
+    //         data={rouletteDataAll}
+    //       />
+    //       <button className="roulette__button" onClick={handleSpinClickAll}>
+    //         Spin the wheel!
+    //       </button>
+    //     </div>
+    //   );
+    // }
+    // if (movie.keyword.includes(selectedKeywordList)) {
+    //   return (
+    //     <div>
+    //       <Wheel
+    //         mustStartSpinning={mustSpin}
+    //         prizeNumber={prizeNumber}
+    //         data={rouletteDataGenre}
+    //       />
+    //       <button className="roulette__button" onClick={handleSpinClickGenre}>
+    //         Spin the wheel!
+    //       </button>
+    //     </div>
+    //   );
+    // } else if (selectedGenreList === null && selectedKeywordList === null) {
+    //   return (
+    //     <div>
+    //       <Wheel
+    //         mustStartSpinning={mustSpin}
+    //         prizeNumber={prizeNumber}
+    //         data={rouletteDataKeyword}
+    //       />
+    //       <button className="roulette__button" onClick={handleSpinClickKeyword}>
+    //         Spin the wheel!
+    //       </button>
+    //     </div>
+    //   );
+    // }
+  };
+
   return (
     <main className="roulette">
       <div className="roulette__filter-wrap">
@@ -186,14 +253,7 @@ function RouletteWheel() {
           ))}
         </select>
       </div>
-      <Wheel
-        mustStartSpinning={mustSpin}
-        prizeNumber={prizeNumber}
-        data={rouletteDataAll}
-      />
-      <button className="roulette__button" onClick={handleSpinClickAll}>
-        SPIN
-      </button>
+      {selectedGenreList && buildWheelSelector()}
     </main>
   );
 }
