@@ -3,7 +3,7 @@ import React from "react";
 import { Wheel } from "react-custom-roulette";
 
 function RouletteWheel() {
-  <>
+  <main className="roulette-wheel">
     <Wheel
       mustStartSpinning={mustSpin}
       prizeNumber={3}
@@ -11,7 +11,7 @@ function RouletteWheel() {
       backgroundColors={["#3e3e3e", "#df3428"]}
       textColors={["#ffffff"]}
     />
-  </>;
+  </main>;
 
   const data = [
     { option: "0", style: { backgroundColor: "green", textColor: "black" } },
