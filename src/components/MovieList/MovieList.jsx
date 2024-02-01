@@ -10,6 +10,7 @@ function MovieList() {
   const [genreList, setGenreList] = useState(null);
   const [keywordList, setKeywordList] = useState(null);
   const [selectedGenreList, setSelectedGenreList] = useState(null);
+  const [selectedKeywordList, setSelectedKeywordList] = useState(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -64,8 +65,7 @@ function MovieList() {
     return <main>Finding Keywords...</main>;
   }
 
-  const changeSelect = (event) => {
-    console.log(event.target.value);
+  const changeGenre = (event) => {
     setSelectedGenreList(event.target.value);
   };
 
@@ -79,12 +79,26 @@ function MovieList() {
     });
   }
 
+  const changeKeyword = (event) => {
+    setSelectedKeywordList(event.target.value);
+  };
+
+  let keywordSelected;
+
+  if (!selectedKeywordList) {
+    keywordSelected = movieList;
+  } else {
+    keywordSelected = movieList.filter((movie) => {
+      return movie.keyword.includes(selectedKeywordList);
+    });
+  }
+
   return (
     <main className="movie-list">
       <div className="movie-list__filter-wrap">
         <select
           className="movie-list__filter-option"
-          onChange={changeSelect}
+          onChange={changeGenre}
           id="genres"
           name="genres"
         >
@@ -99,6 +113,7 @@ function MovieList() {
         </select>
         <select
           className="movie-list__filter-option"
+          onChange={changeKeyword}
           id="keywords"
           name="keywords"
         >
@@ -112,22 +127,62 @@ function MovieList() {
           ))}
         </select>
       </div>
-      {genreSelected.map((movie) => (
-        <article key={movie.id} className="movie-list__movie">
-          <div>
-            <Link to={`/movies/${movie.id}`}>
-              <img
-                className="movie-list__movie-image"
-                src={movie.image}
-                alt="movie poster"
-              />
-            </Link>
-          </div>
-          <div className="movie-list__movie-title-wrap">
-            <h2 className="movie-list__movie-title">{movie.title}</h2>
-          </div>
-        </article>
-      ))}
+      {movieList.map((movie) => {
+        if (movie.genre.includes(selectedGenreList)) {
+          return (
+            <article key={movie.id} className="movie-list__movie">
+              <div>
+                <Link to={`/movies/${movie.id}`}>
+                  <img
+                    className="movie-list__movie-image"
+                    src={movie.image}
+                    alt={movie.title}
+                  />
+                </Link>
+              </div>
+              <div className="movie-list__movie-title-wrap">
+                <h2 className="movie-list__movie-title">{movie.title}</h2>
+              </div>
+            </article>
+          );
+        }
+        if (movie.keyword.includes(selectedKeywordList)) {
+          return (
+            <article key={movie.id} className="movie-list__movie">
+              <div>
+                <Link to={`/movies/${movie.id}`}>
+                  <img
+                    className="movie-list__movie-image"
+                    src={movie.image}
+                    alt={movie.title}
+                  />
+                </Link>
+              </div>
+              <div className="movie-list__movie-title-wrap">
+                <h2 className="movie-list__movie-title">{movie.title}</h2>
+              </div>
+            </article>
+          );
+        }
+        if (!selectedGenreList && !selectedKeywordList) {
+          return (
+            <article key={movie.id} className="movie-list__movie">
+              <div>
+                <Link to={`/movies/${movie.id}`}>
+                  <img
+                    className="movie-list__movie-image"
+                    src={movie.image}
+                    alt={movie.title}
+                  />
+                </Link>
+              </div>
+              <div className="movie-list__movie-title-wrap">
+                <h2 className="movie-list__movie-title">{movie.title}</h2>
+              </div>
+            </article>
+          );
+        }
+      })}
     </main>
   );
 }
