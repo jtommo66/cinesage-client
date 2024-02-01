@@ -16,6 +16,19 @@ function RouletteWheel() {
   const [selectedKeywordList, setSelectedKeywordList] = useState(null);
   const [keywordList, setKeywordList] = useState(null);
 
+  const chooseRandom = (arr, num = 1) => {
+    const res = [];
+    for (let i = 0; i < num; ) {
+      const random = Math.floor(Math.random() * arr.length);
+      if (res.indexOf(arr[random]) !== -1) {
+        continue;
+      }
+      res.push(arr[random]);
+      i++;
+    }
+    return res;
+  };
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -87,19 +100,6 @@ function RouletteWheel() {
       return movie.keyword.includes(selectedKeywordList);
     });
   }
-
-  const chooseRandom = (arr, num = 1) => {
-    const res = [];
-    for (let i = 0; i < num; ) {
-      const random = Math.floor(Math.random() * arr.length);
-      if (res.indexOf(arr[random]) !== -1) {
-        continue;
-      }
-      res.push(arr[random]);
-      i++;
-    }
-    return res;
-  };
 
   const randomMovies = chooseRandom(movieList, 10);
   const randomGenres = chooseRandom(genreList, 10);
@@ -190,9 +190,9 @@ function RouletteWheel() {
         mustStartSpinning={mustSpin}
         prizeNumber={prizeNumber}
         data={rouletteDataAll}
-        onStopSpinning={() => {
-          setMustSpin(false);
-        }}
+        // onStopSpinning={() => {
+        //   setMustSpin(false);
+        // }}
       />
       <button className="roulette__button" onClick={handleSpinClickAll}>
         SPIN

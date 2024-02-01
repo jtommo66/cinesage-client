@@ -154,7 +154,8 @@ function MovieList() {
               </div>
             </article>
           );
-        } else if (!selectedGenreList && !selectedKeywordList) {
+        }
+        if (selectedGenreList === "null" && selectedKeywordList === "null") {
           return (
             <article key={movie.id} className="movie-list__movie">
               <div>
