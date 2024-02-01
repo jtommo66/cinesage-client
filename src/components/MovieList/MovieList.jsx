@@ -39,15 +39,6 @@ function MovieList() {
       }
     };
 
-    // const selectedGenre = async () => {
-    //   try {
-    //     const genre = await axios.get(`${API_URL}/movie/genre/${params.genre}`);
-    //     setSelectedGenreList(genre.data);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // };
-
     fetchKeywords();
     fetchGenres();
     fetchMovies();
@@ -163,8 +154,7 @@ function MovieList() {
               </div>
             </article>
           );
-        }
-        if (!selectedGenreList && !selectedKeywordList) {
+        } else if (!selectedGenreList && !selectedKeywordList) {
           return (
             <article key={movie.id} className="movie-list__movie">
               <div>
