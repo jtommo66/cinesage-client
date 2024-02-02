@@ -15,7 +15,19 @@ function RouletteWheel() {
   const [keywordList, setKeywordList] = useState(null);
   const [selectedGenreList, setSelectedGenreList] = useState(null);
   const [selectedKeywordList, setSelectedKeywordList] = useState(null);
-  const [keywordList, setKeywordList] = useState(null);
+
+  const chooseRandom = (arr, num = 1) => {
+    const res = [];
+    for (let i = 0; i < num; ) {
+      const random = Math.floor(Math.random() * arr.length);
+      if (res.indexOf(arr[random]) !== -1) {
+        continue;
+      }
+      res.push(arr[random]);
+      i++;
+    }
+    return res;
+  };
 
   useEffect(() => {
     const fetchMovies = async () => {
