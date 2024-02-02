@@ -72,8 +72,6 @@ const RouletteWheel = () => {
   if (!movieList || !keywordList) {
     return <p>Loading</p>;
   }
-  // const generateId = () =>
-  //   `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}`;
 
   console.log(selectedGenreList);
   // filter prize list if genre is selected
