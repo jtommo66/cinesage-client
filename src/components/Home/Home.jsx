@@ -28,31 +28,35 @@ function Home() {
   }
 
   return (
-    <main className="single-movie">
-      <div className="single-movie__wrap">
-        <div className="single-movie__image-wrap">
+    <main className="home">
+      <div className="home__text-wrap">
+        <h1 className="home__text">Welcome to CineSage!</h1>
+        <h2 className="home__text">Film of the day!</h2>
+      </div>
+      <div className="home__wrap">
+        <div className="home__image-wrap">
           <img
-            className="single-movie__image"
+            className="home__image"
             src={singleMovie.image}
             alt="movie poster"
           />
         </div>
-        <div className="single-movie__info-wrap">
-          <h2 className="single-movie__title">{singleMovie.title} </h2>
-          <div className="single-movie__inner-wrap">
-            <div className="single-movie__director-wrap">
+        <div className="home__info-wrap">
+          <h2 className="home__title">{singleMovie.title} </h2>
+          <div className="home__inner-wrap">
+            <div className="home__director-wrap">
               {singleMovie.director.map((director, i) => {
                 return (
-                  <h3 key={i} className="single-movie__director">
+                  <h3 key={i} className="home__director">
                     {director}
                   </h3>
                 );
               })}
             </div>
-            <div className="single-movie__genre-wrap">
+            <div className="home__genre-wrap">
               {singleMovie.genre.map((genre, i) => {
                 return (
-                  <h3 key={i} className="single-movie__genre">
+                  <h3 key={i} className="home__genre">
                     {genre}
                   </h3>
                 );
@@ -61,7 +65,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="single-movie__trailer-wrap">
+      <div className="home__trailer-wrap">
         <Popup
           trigger={<button className="button"> Trailer</button>}
           position="top center"
@@ -76,6 +80,7 @@ function Home() {
           </div>
         </Popup>
       </div>
+      <h3 className="home__description">{singleMovie.synopsis}</h3>
     </main>
   );
 }
