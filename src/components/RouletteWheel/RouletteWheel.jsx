@@ -104,7 +104,8 @@ const RouletteWheel = () => {
 
   const [start, setStart] = useState(false);
 
-  const prizeIndex = prizes.length + winPrizeIndex;
+  const prizeIndex = prizes.length;
+  // const prizeIndex = prizes.length + winPrizeIndex;
 
   const handleStart = () => {
     setStart((prevState) => !prevState);

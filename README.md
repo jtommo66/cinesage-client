@@ -32,8 +32,6 @@ People have access to an abundance of movies but are bad at making quick decisio
 
 **Trailers** - As a user, I want to be able to acces movie trailers for the films I'm finding via CineSage.
 
-**User Ratings and Reviews** - As a logged in user (possibly a 'nice to have'), I want to be able to rate and review movies I've watched. These reviews will have like and dislike buttons for other logged in users to up/down vote
-
 ## Implementation
 
 ### Tech Stack
@@ -45,9 +43,8 @@ People have access to an abundance of movies but are bad at making quick decisio
         - react
         - react-router
         - axios
-        - react-custom-roulette - https://www.npmjs.com/package/react-custom-roulette
+        - react-roulette-pro - https://www.npmjs.com/package/react-roulette-pro
         - ReactJs Popup - https://react-popup.elazizi.com/getting-started/
-        - React Bootstrap - https://react-bootstrap.netlify.app/
     - Server Libraries
         - knex
         - express
@@ -193,6 +190,8 @@ this out in the future.
 ## Nice-to-haves
 
 **User accounts** - Users will be able to create password protected accounts
+
+**User Ratings and Reviews** - As a logged in user (possibly a 'nice to have'), I want to be able to rate and review movies I've watched. These reviews will have like and dislike buttons for other logged in users to up/down vote
 
 **Social media features** - Users can create watch lists (possibly to be shared with other users, via url link)
 
