@@ -1,18 +1,15 @@
 import "./RouletteWheel.scss";
-import React, { useState } from "react";
-import { Wheel } from "react-custom-roulette";
 import axios from "axios";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import RoulettePro from "react-roulette-pro";
+import "react-roulette-pro/dist/index.css";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-function RouletteWheel() {
-  const [mustSpin, setMustSpin] = useState(false);
-  const [prizeNumber, setPrizeNumber] = useState(0);
-
+const RouletteWheel = () => {
   const [movieList, setMovieList] = useState(null);
-  const [genreList, setGenreList] = useState(null);
-  const [keywordList, setKeywordList] = useState(null);
+  const [genreList, setGenreList] = useState([]);
+  const [keywordList, setKeywordList] = useState([]);
   const [selectedGenreList, setSelectedGenreList] = useState(null);
   const [selectedKeywordList, setSelectedKeywordList] = useState(null);
 
@@ -61,151 +58,60 @@ function RouletteWheel() {
     fetchMovies();
   }, []);
 
-  if (!movieList) {
-    return <main>Finding Movies...</main>;
-  }
-
-  if (!genreList) {
-    return <main>Finding Genres...</main>;
-  }
-
-  if (!keywordList) {
-    return <main>Finding Keywords...</main>;
-  }
-
   const changeGenre = (event) => {
     setSelectedGenreList(event.target.value);
   };
-
-  let genreSelected;
-
-  if (!selectedGenreList) {
-    genreSelected = movieList;
-  } else {
-    genreSelected = movieList.filter((movie) => {
-      return movie.genre.includes(selectedGenreList);
-    });
-  }
 
   const changeKeyword = (event) => {
     setSelectedKeywordList(event.target.value);
   };
 
-  let keywordSelected;
+  let randomMovies = [];
 
-  if (!selectedKeywordList) {
-    keywordSelected = movieList;
-  } else {
-    keywordSelected = movieList.filter((movie) => {
-      return movie.keyword.includes(selectedKeywordList);
-    });
+  if (movieList) {
+    randomMovies = chooseRandom(movieList, 20);
   }
 
-  const randomMovies = chooseRandom(movieList, 10);
-  const randomGenres = chooseRandom(genreList, 10);
-  const randomKeywords = chooseRandom(keywordList, 10);
-
-  const rouletteDataAll = movieList.map((movie, i) => {
-    return {
-      option: movie.title,
-      genre: movie.genre,
-      style: { backgroundColor: "maroon", textColor: "white", fontSize: 15 },
-    };
+  const prizes = randomMovies.map((movie) => {
+    return { image: movie.image };
   });
 
-  const rouletteDataGenre = randomGenres.map((movie, i) => {
-    return {
-      option: movie.title,
-      style: { backgroundColor: "maroon", textColor: "white", fontSize: 15 },
-    };
-  });
+  const winPrizeIndex = 0;
 
-  const rouletteDataKeyword = randomKeywords.map((movie, i) => {
-    return {
-      option: movie.title,
-      style: { backgroundColor: "maroon", textColor: "white", fontSize: 15 },
-    };
-  });
+  const reproductionArray = (array = [], length = 0) => [
+    ...Array(length)
+      .fill("_")
+      .map(() => array[Math.floor(Math.random() * array.length)]),
+  ];
 
-  const handleSpinClickAll = () => {
-    if (!mustSpin) {
-      const newPrizeNumber = Math.floor(Math.random() * rouletteDataAll.length);
-      setPrizeNumber(newPrizeNumber);
-      setMustSpin(true);
-    }
-  };
-  const handleSpinClickGenre = () => {
-    if (!mustSpin) {
-      const newPrizeNumber = Math.floor(
-        Math.random() * rouletteDataGenre.length
-      );
-      setPrizeNumber(newPrizeNumber);
-      setMustSpin(true);
-    }
-  };
-  const handleSpinClickKeyword = () => {
-    if (!mustSpin) {
-      const newPrizeNumber = Math.floor(
-        Math.random() * rouletteDataKeyword.length
-      );
-      setPrizeNumber(newPrizeNumber);
-      setMustSpin(true);
-    }
+  const reproducedPrizeList = [
+    ...prizes,
+    ...reproductionArray(prizes, prizes.length * 3),
+    ...prizes,
+    ...reproductionArray(prizes, prizes.length),
+  ];
+
+  const generateId = () =>
+    `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}`;
+
+  const prizeList = reproducedPrizeList.map((prize) => ({
+    ...prize,
+    id:
+      typeof crypto.randomUUID === "function"
+        ? crypto.randomUUID()
+        : generateId(),
+  }));
+
+  const [start, setStart] = useState(false);
+
+  const prizeIndex = prizes.length + winPrizeIndex;
+
+  const handleStart = () => {
+    setStart((prevState) => !prevState);
   };
 
-  const buildMovieWheel = (movie) => {
-    const randomFilteredMovies = chooseRandom(movieList, 10);
-    return (
-      <div>
-        <Wheel
-          mustStartSpinning={mustSpin}
-          prizeNumber={prizeNumber}
-          data={randomFilteredMovies}
-        />
-        <button className="roulette__button" onClick={handleSpinClickGenre}>
-          Spin the wheel!
-        </button>
-      </div>
-    );
-  };
-
-  const buildGenreWheel = (movie) => {
-    let filteredMovieList = rouletteDataAll.filter((movie) => {
-      return movie.genre.includes(selectedGenreList);
-    });
-
-    const randomFilteredMovies = chooseRandom(filteredMovieList, 10);
-    return (
-      <div>
-        <Wheel
-          mustStartSpinning={mustSpin}
-          prizeNumber={prizeNumber}
-          data={randomFilteredMovies}
-        />
-        <button className="roulette__button" onClick={handleSpinClickAll}>
-          Spin the wheel!
-        </button>
-      </div>
-    );
-  };
-
-  const buildKeywordWheel = (movie) => {
-    let filteredMovieList = rouletteDataAll.filter((movie) => {
-      return movie.keyword.includes(selectedKeywordList);
-    });
-    const randomFilteredMovies = chooseRandom(filteredMovieList, 10);
-    return (
-      <div>
-        <Wheel
-          mustStartSpinning={mustSpin}
-          prizeNumber={prizeNumber}
-          data={randomFilteredMovies}
-        />
-        <button className="roulette__button" onClick={handleSpinClickKeyword}>
-          Spin the wheel!
-        </button>
-      </div>
-    );
+  const handlePrizeDefined = () => {
+    console.log("🥳 Prize defined! 🥳");
   };
 
   return (
@@ -232,9 +138,7 @@ function RouletteWheel() {
           id="keywords"
           name="keywords"
         >
-          <option key="blank-select" value="null">
-            Select Keyword
-          </option>
+          <option key="blank-select">Select Keyword</option>
           {keywordList.map((keyword) => (
             <option key={keyword.id} value={keyword.keyword}>
               {keyword.keyword}
@@ -242,14 +146,21 @@ function RouletteWheel() {
           ))}
         </select>
       </div>
-      {!selectedGenreList &&
-        !selectedKeywordList &&
-        movieList &&
-        buildMovieWheel()}
-      {selectedGenreList && buildGenreWheel()}
-      {selectedKeywordList && buildKeywordWheel()}
+      <div className="roulette__wheel-wrap">
+        {prizes && (
+          <RoulettePro
+            prizes={prizeList}
+            prizeIndex={prizeIndex}
+            start={start}
+            onPrizeDefined={handlePrizeDefined}
+          />
+        )}
+        <button className="roulette__button" onClick={handleStart}>
+          Start
+        </button>
+      </div>
     </main>
   );
-}
+};
 
 export default RouletteWheel;
