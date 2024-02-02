@@ -12,6 +12,7 @@ const RouletteWheel = () => {
   const [keywordList, setKeywordList] = useState([]);
   const [selectedGenreList, setSelectedGenreList] = useState(null);
   const [selectedKeywordList, setSelectedKeywordList] = useState(null);
+  const [start, setStart] = useState(false);
 
   const chooseRandom = (arr, num = 1) => {
     const res = [];
@@ -59,6 +60,8 @@ const RouletteWheel = () => {
   }, []);
 
   const changeGenre = (event) => {
+    console.log(event.target.value);
+    setStart(false);
     setSelectedGenreList(event.target.value);
   };
 
@@ -66,53 +69,81 @@ const RouletteWheel = () => {
     setSelectedKeywordList(event.target.value);
   };
 
-  let randomMovies = [];
+  if (!movieList || !keywordList) {
+    return <p>Loading</p>;
+  }
+  // const generateId = () =>
+  //   `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}`;
 
-  if (movieList) {
-    randomMovies = chooseRandom(movieList, 20);
+  console.log(selectedGenreList);
+  // filter prize list if genre is selected
+  let newList = movieList;
+
+  if (selectedGenreList) {
+    newList = newList.filter((movie) => {
+      return movie.genre.includes(selectedGenreList);
+    });
   }
 
-  const prizes = randomMovies.map((movie) => {
-    return { image: movie.image };
+  console.log(newList);
+
+  newList = [
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+    ...newList,
+  ];
+
+  console.log(newList);
+
+  newList = newList.map((prize, index) => {
+    return {
+      ...prize,
+      id: index,
+    };
   });
 
+  console.log(newList);
+
   const winPrizeIndex = 0;
-
-  const reproductionArray = (array = [], length = 0) => [
-    ...Array(length)
-      .fill("_")
-      .map(() => array[Math.floor(Math.random() * array.length)]),
-  ];
-
-  const reproducedPrizeList = [
-    ...prizes,
-    ...reproductionArray(prizes, prizes.length * 3),
-    ...prizes,
-    ...reproductionArray(prizes, prizes.length),
-  ];
-
-  const generateId = () =>
-    `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}`;
-
-  const prizeList = reproducedPrizeList.map((prize) => ({
-    ...prize,
-    id:
-      typeof crypto.randomUUID === "function"
-        ? crypto.randomUUID()
-        : generateId(),
-  }));
-
-  const [start, setStart] = useState(false);
-
-  const prizeIndex = prizes.length;
-  // const prizeIndex = prizes.length + winPrizeIndex;
 
   const handleStart = () => {
     setStart((prevState) => !prevState);
   };
 
   const handlePrizeDefined = () => {
-    console.log("🥳 Prize defined! 🥳");
+    console.log("🥳 Enjoy your movie! 🥳");
   };
 
   return (
@@ -148,17 +179,21 @@ const RouletteWheel = () => {
         </select>
       </div>
       <div className="roulette__wheel-wrap">
-        {prizes && (
-          <RoulettePro
-            prizes={prizeList}
-            prizeIndex={prizeIndex}
-            start={start}
-            onPrizeDefined={handlePrizeDefined}
-          />
-        )}
-        <button className="roulette__button" onClick={handleStart}>
-          Start
-        </button>
+        <>
+          {movieList && (
+            <>
+              <RoulettePro
+                start={start}
+                prizes={newList}
+                prizeIndex={Math.floor(Math.random() * newList.length - 1)}
+                spinningTime={3}
+              />
+              <button className="roulette__button" onClick={handleStart}>
+                Start
+              </button>
+            </>
+          )}
+        </>
       </div>
     </main>
   );
