@@ -93,7 +93,7 @@ function MovieList() {
           id="genres"
           name="genres"
         >
-          <option key="blank-select" value="null">
+          <option key="blank-select" value={null}>
             Select Genre
           </option>
           {genreList.map((genre) => (
@@ -108,7 +108,7 @@ function MovieList() {
           id="keywords"
           name="keywords"
         >
-          <option key="blank-select" value="null">
+          <option key="blank-select" value={null}>
             Select Keyword
           </option>
           {keywordList.map((keyword) => (
@@ -154,10 +154,7 @@ function MovieList() {
               </div>
             </article>
           );
-        } else if (
-          selectedGenreList === "null" &&
-          selectedKeywordList === "null"
-        ) {
+        } else if (selectedGenreList === null && selectedKeywordList === null) {
           return (
             <article key={movie.id} className="movie-list__movie">
               <div>
