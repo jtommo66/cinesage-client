@@ -57,7 +57,6 @@
   &__by {
     color: $color-brand-light;
     align-self: flex-start;
-    padding-left: 0.5rem;
     font-size: 0.6rem;
   }
 
@@ -88,5 +87,28 @@
     font-size: 0.8rem;
     padding: 1rem;
     margin: 0;
+  }
+
+  &__up-vote {
+    background-color: $color-brand-light;
+    height: 1rem;
+  }
+  &__down-vote {
+    background-color: $color-brand-light;
+    height: 1rem;
+  }
+
+  &__by-icon-wrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  &__icon-wrap {
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
   }
 }

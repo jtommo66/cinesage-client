@@ -1,6 +1,8 @@
 import "./Reviews.scss";
 import ReactStars from "react-stars";
 import React from "react";
+import UpVote from "../../assets/images/upvote.svg";
+import DownVote from "../../assets/images/downvote.svg";
 
 function Reviews({ singleMovie }) {
   return (
@@ -23,7 +25,21 @@ function Reviews({ singleMovie }) {
           return (
             <article className="review" key={i}>
               <div className="review__wrap">
-                <p className="review__by">Reviewed By:</p>
+                <div className="review__by-icon-wrap">
+                  <p className="review__by">Reviewed By:</p>
+                  <div className="review__icon-wrap">
+                    <img
+                      src={UpVote}
+                      alt="up vote icon"
+                      className="review__up-vote"
+                    />
+                    <img
+                      src={DownVote}
+                      alt="down vote icon"
+                      className="review__down-vote"
+                    />
+                  </div>
+                </div>
                 <div className="review__user-wrap">
                   <p className="review__user-name">{review.userName}</p>
                   <ReactStars
