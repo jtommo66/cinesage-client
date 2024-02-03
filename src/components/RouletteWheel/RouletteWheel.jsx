@@ -14,19 +14,6 @@ const RouletteWheel = () => {
   const [selectedKeywordList, setSelectedKeywordList] = useState(null);
   const [start, setStart] = useState(false);
 
-  // const chooseRandom = (arr, num = 1) => {
-  //   const res = [];
-  //   for (let i = 0; i < num; ) {
-  //     const random = Math.floor(Math.random() * arr.length);
-  //     if (res.indexOf(arr[random]) !== -1) {
-  //       continue;
-  //     }
-  //     res.push(arr[random]);
-  //     i++;
-  //   }
-  //   return res;
-  // };
-
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -73,8 +60,6 @@ const RouletteWheel = () => {
     return <p>Loading</p>;
   }
 
-  console.log(selectedGenreList);
-  // filter prize list if genre is selected
   let newList = movieList;
 
   if (selectedGenreList) {
@@ -82,8 +67,15 @@ const RouletteWheel = () => {
       return movie.genre.includes(selectedGenreList);
     });
   }
+  if (selectedKeywordList) {
+    newList = newList.filter((movie) => {
+      return movie.keyword.includes(selectedKeywordList);
+    });
+  }
 
-  console.log(newList);
+  if (selectedGenreList === null && selectedKeywordList === null) {
+    newList = movieList;
+  }
 
   newList = [
     ...newList,
@@ -176,6 +168,16 @@ const RouletteWheel = () => {
           ))}
         </select>
       </div>
+      {/* <div className="roulette-scroller">
+        {newList.map((movie) => {
+          return (
+            <article key={movie.id} className="roulette-scroller__item">
+              <img className="roulette-scroller__image" src={movie.image} />
+            </article>
+          );
+        })}
+      </div> */}
+
       <div className="roulette__wheel-wrap">
         <>
           {movieList && (
