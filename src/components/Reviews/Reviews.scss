@@ -47,3 +47,46 @@
     color: $color-brand-dark;
   }
 }
+
+.review {
+  margin: 1rem;
+  border: 1px solid $color-brand-light;
+  box-shadow: 1px 2px 2px;
+  background-color: $color-brand-dark;
+
+  &__by {
+    color: $color-brand-light;
+    align-self: flex-start;
+    padding-left: 0.5rem;
+    font-size: 0.6rem;
+  }
+
+  &__user-wrap {
+    width: 80%;
+  }
+
+  &__user-name {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__user-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: $color-brand-light;
+  }
+
+  &__text {
+    color: $color-brand-light;
+    font-size: 0.8rem;
+    padding: 1rem;
+    margin: 0;
+  }
+}

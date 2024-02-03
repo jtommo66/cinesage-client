@@ -79,7 +79,7 @@ function SingleMovie() {
       </div>
       <h3 className="single-movie__description">{singleMovie.synopsis}</h3>
       <div className="single-movie__reviews-wrap">
-        <Reviews />
+        <Reviews singleMovie={singleMovie} />
       </div>
     </main>
   );
