@@ -74,12 +74,21 @@
   &__description {
     font-weight: 500;
     margin: 1rem;
+    padding-top: 1rem;
     font-size: 0.8rem;
   }
 
   &__text-wrap {
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  &__header {
+    font-size: 1.5rem;
+  }
+  &__text {
+    font-size: 0.8rem;
   }
 }
 .button {

@@ -30,8 +30,8 @@ function Home() {
   return (
     <main className="home">
       <div className="home__text-wrap">
-        <h1 className="home__text">Welcome to CineSage!</h1>
-        <h2 className="home__text">Film of the day!</h2>
+        <h1 className="home__header">Welcome to CineSage!</h1>
+        <h2 className="home__text">Struggling to pick a movie? Let us help!</h2>
       </div>
       <div className="home__wrap">
         <div className="home__image-wrap">
