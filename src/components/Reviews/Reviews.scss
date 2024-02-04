@@ -46,6 +46,32 @@
     background-color: $color-brand-light;
     color: $color-brand-dark;
   }
+
+  &__submit-wrap {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__rating-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 4rem;
+  }
+
+  &__rating-text {
+    font-size: 0.8rem;
+    width: 6rem;
+    padding-bottom: 0.2rem;
+  }
+
+  &__rating-dropdown {
+    width: 2rem;
+    background-color: $color-brand-light;
+    border: 1px solid $color-brand-dark;
+    border-radius: 4px;
+    box-shadow: 1px 2px 2px;
+  }
 }
 
 .review {

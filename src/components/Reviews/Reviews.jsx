@@ -16,8 +16,25 @@ function Reviews({ singleMovie }) {
             id="Review"
             placeholder="Add a review"
           ></textarea>
-
-          <button className="review-form__button">Post</button>
+          <div className="review-form__submit-wrap">
+            <div className="review-form__rating-wrap">
+              <label className="review-form__rating-text" for="ratings">
+                Select Rating
+              </label>
+              <select
+                className="review-form__rating-dropdown"
+                name="rating"
+                id="rating"
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+            <button className="review-form__button">Post</button>
+          </div>
         </form>
       </div>
       <div>
