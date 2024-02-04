@@ -14,6 +14,19 @@ const RouletteWheel = () => {
   const [selectedKeywordList, setSelectedKeywordList] = useState(null);
   const [start, setStart] = useState(false);
 
+  const chooseRandom = (arr, num = 1) => {
+    const res = [];
+    for (let i = 0; i < num; ) {
+      const random = Math.floor(Math.random() * arr.length);
+      if (res.indexOf(arr[random]) !== -1) {
+        continue;
+      }
+      res.push(arr[random]);
+      i++;
+    }
+    return res;
+  };
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -74,7 +87,8 @@ const RouletteWheel = () => {
   }
 
   if (selectedGenreList === null && selectedKeywordList === null) {
-    newList = movieList;
+    newList = chooseRandom(movieList, 10);
+    console.log(newList);
   }
 
   newList = [
