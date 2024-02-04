@@ -11,16 +11,18 @@ function Header() {
             <img className="header__logo" src={logo} alt="CineSage Logo" />
           </Link>
         </div>
-        <div className="header__nav-wrap">
-          <NavLink className="header__link" to="/roulette">
-            Movie Roulette
-          </NavLink>
-          <NavLink className="header__link" to="/movies">
-            Movies
-          </NavLink>
-          <NavLink className="header__link" to="/login">
-            Log In
-          </NavLink>
+        <div className="header__nav-background">
+          <div className="header__nav-wrap">
+            <NavLink className="header__link" to="/roulette">
+              Movie Roulette
+            </NavLink>
+            <NavLink className="header__link" to="/movies">
+              Movies
+            </NavLink>
+            <NavLink className="header__link" to="/login">
+              Log In
+            </NavLink>
+          </div>
         </div>
       </div>
     </header>
