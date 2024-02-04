@@ -103,7 +103,7 @@ function Home() {
         >
           <div className="trailer">
             <iframe
-              className="trailer__window"
+              className="trailer__window trailer__window-large"
               src={singleMovie.trailer}
               title={singleMovie.title}
               allowFullScreen
@@ -112,7 +112,6 @@ function Home() {
         </Popup>
       </div>
       <h3 className="home__description">{singleMovie.synopsis}</h3>
-
       <div className="movie-scroller">
         {[...scrollList, ...scrollList].map((movie, i) => {
           return (

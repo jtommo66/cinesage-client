@@ -7,10 +7,27 @@
   color: $color-brand-tertiary;
   height: 100vh;
 
+  &__header {
+    font-size: 1.5rem;
+
+    @include tablet {
+      font-size: 2rem;
+    }
+  }
+  &__text {
+    font-size: 0.8rem;
+
+    @include tablet {
+      font-size: 2rem;
+    }
+  }
+
   &__wrap {
     display: flex;
     align-items: center;
     padding: 1rem 1rem;
+    max-width: $desktop-width;
+    margin: auto;
   }
 
   &__image-wrap {
@@ -27,17 +44,28 @@
     flex-direction: column;
     align-items: center;
   }
+
   &__title {
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 0.5rem;
     text-align: center;
     font-size: 1rem;
+
+    @include tablet {
+      font-size: 2rem;
+      margin-bottom: 5rem;
+    }
   }
 
   &__inner-wrap {
     display: flex;
     padding-left: 1rem;
+
+    @include tablet {
+      flex-direction: column;
+      width: 100%;
+    }
   }
 
   &__director-wrap {
@@ -45,6 +73,10 @@
     width: 50%;
     align-self: center;
     padding: 0 0.5rem;
+
+    @include tablet {
+      margin-bottom: 3rem;
+    }
   }
 
   &__director {
@@ -52,6 +84,10 @@
     text-align: left;
     margin: 0.5rem 0;
     font-size: 0.8rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
   }
 
   &__genre-wrap {
@@ -65,6 +101,10 @@
     text-align: left;
     margin: 0.5rem 0;
     font-size: 0.8rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
   }
 
   &__trailer-wrap {
@@ -75,21 +115,22 @@
   &__description {
     font-weight: 500;
     margin: 1rem;
-    padding-top: 1rem;
+    padding: 1rem 0;
     font-size: 0.8rem;
+    max-width: $desktop-width;
+    text-align: center;
+
+    @include tablet {
+      margin: auto;
+      font-size: 1.5rem;
+      padding: 3rem 0;
+    }
   }
 
   &__text-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  &__header {
-    font-size: 1.5rem;
-  }
-  &__text {
-    font-size: 0.8rem;
   }
 }
 .button {
@@ -107,6 +148,12 @@
 
   &__window {
     width: 100%;
+  }
+
+  &__window-large {
+    @include tablet {
+      height: 500px;
+    }
   }
 }
 .popup-overlay {
@@ -129,14 +176,16 @@
   width: 100%;
   overflow: hidden;
   background-color: $color-brand-light;
+  margin: auto;
 
   &__item {
     height: 100%;
     padding: 0 1rem;
     display: flex;
     align-items: center;
-    width: 100%;
+    max-width: $desktop-width;
     animation: 10s slide infinite linear;
+    max-width: $desktop-width;
   }
 
   &__image {
