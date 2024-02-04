@@ -1,13 +1,17 @@
 # CineSage
 
-Possible logo examples
-![](logo1.png)
-![](logo2.png)
-![](logo3.png)
-
 ## Overview
 
 An app for film lovers that will help users to select, rate and review a movies.
+
+### Installation
+
+To get started
+
+- run 'npm i' in the terminal.
+- Configure the .env file, using .env.sample
+  - REACT_APP_API_URL
+    Run 'npm start' in the terminal
 
 ### Problem
 
