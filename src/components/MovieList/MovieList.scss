@@ -2,6 +2,18 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/breakpoints" as *;
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .movie-list {
   display: flex;
   flex-wrap: wrap;
@@ -53,6 +65,11 @@
     overflow: hidden;
     object-fit: cover;
     height: 18vh;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      animation: pulse 1s infinite;
+    }
 
     @include tablet {
       height: 33vh;
