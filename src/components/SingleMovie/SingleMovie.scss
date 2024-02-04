@@ -1,5 +1,6 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/breakpoints" as *;
 
 .single-movie {
   background-color: $color-brand-dark;
@@ -9,6 +10,8 @@
     display: flex;
     align-items: center;
     padding: 1rem 1rem;
+    max-width: $desktop-width;
+    margin: auto;
   }
 
   &__image-wrap {
@@ -31,11 +34,21 @@
     margin-bottom: 0.5rem;
     text-align: center;
     font-size: 1rem;
+
+    @include tablet {
+      font-size: 2rem;
+      margin-bottom: 5rem;
+    }
   }
 
   &__inner-wrap {
     display: flex;
     padding-left: 1rem;
+
+    @include tablet {
+      flex-direction: column;
+      width: 100%;
+    }
   }
 
   &__director-wrap {
@@ -43,6 +56,10 @@
     width: 50%;
     align-self: center;
     padding: 0 0.5rem;
+
+    @include tablet {
+      margin-bottom: 3rem;
+    }
   }
 
   &__director {
@@ -50,6 +67,10 @@
     text-align: left;
     margin: 0.5rem 0;
     font-size: 0.8rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
   }
 
   &__genre-wrap {
@@ -63,6 +84,10 @@
     text-align: left;
     margin: 0.5rem 0;
     font-size: 0.8rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
   }
 
   &__trailer-wrap {
@@ -74,6 +99,14 @@
     font-weight: 500;
     margin: 1rem;
     font-size: 0.8rem;
+    max-width: $desktop-width;
+    text-align: center;
+
+    @include tablet {
+      margin: auto;
+      font-size: 1.5rem;
+      padding: 3rem 0;
+    }
   }
   &__reviews-wrap {
     background-color: $color-brand-light;

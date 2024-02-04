@@ -27,7 +27,7 @@ function Reviews({ singleMovie }) {
   };
 
   return (
-    <div>
+    <div className="review__contain">
       <div className="review-form__wrap">
         <form className="review-form" onSubmit={addReview}>
           <label className="review-form__title">Add Your Review</label>
