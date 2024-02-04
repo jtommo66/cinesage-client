@@ -2,11 +2,13 @@ import "./Home.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Popup from "reactjs-popup";
+import { Link } from "react-router-dom";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 function Home() {
   const [singleMovie, setSingleMovie] = useState(null);
+  const [movieList, setMovieList] = useState(null);
 
   useEffect(() => {
     const randomMovieId = Math.floor(Math.random() * 100) + 1;
@@ -20,12 +22,41 @@ function Home() {
       }
     };
 
+    const fetchMovieList = async () => {
+      try {
+        const movies = await axios.get(`${API_URL}/movies`);
+        setMovieList(movies.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     fetchMovie();
+    fetchMovieList();
   }, []);
 
   if (!singleMovie) {
     return <p>Loading...</p>;
   }
+
+  if (!movieList) {
+    return <p>Loading Movies...</p>;
+  }
+  const chooseRandom = (arr, num = 1) => {
+    const res = [];
+    for (let i = 0; i < num; ) {
+      const random = Math.floor(Math.random() * arr.length);
+      if (res.indexOf(arr[random]) !== -1) {
+        continue;
+      }
+      res.push(arr[random]);
+      i++;
+    }
+    return res;
+  };
+
+  let scrollList = chooseRandom(movieList, 3);
+  console.log(scrollList);
 
   return (
     <main className="home">
@@ -81,6 +112,18 @@ function Home() {
         </Popup>
       </div>
       <h3 className="home__description">{singleMovie.synopsis}</h3>
+
+      <div className="movie-scroller">
+        {[...scrollList, ...scrollList].map((movie, i) => {
+          return (
+            <Link to={`/movies/${movie.id}`}>
+              <article key={i} className="movie-scroller__item">
+                <img className="movie-scroller__image" src={movie.image} />
+              </article>
+            </Link>
+          );
+        })}
+      </div>
     </main>
   );
 }

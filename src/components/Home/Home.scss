@@ -111,3 +111,34 @@
 .popup-overlay {
   background: rgba(19, 24, 44, 0.7);
 }
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.movie-scroller {
+  display: flex;
+  flex-direction: row;
+  height: 50vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: $color-brand-light;
+
+  &__item {
+    height: 100%;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    animation: 10s slide infinite linear;
+  }
+
+  &__image {
+    height: 80%;
+  }
+}
