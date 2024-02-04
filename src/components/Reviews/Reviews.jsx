@@ -1,16 +1,40 @@
 import "./Reviews.scss";
 import ReactStars from "react-stars";
-import React from "react";
+import React, { useState } from "react";
 import UpVote from "../../assets/images/upvote.svg";
 import DownVote from "../../assets/images/downvote.svg";
+import axios from "axios";
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 function Reviews({ singleMovie }) {
+  const [formFields, setFormFields] = useState({
+    review: "",
+    rating: "",
+  });
+
+  const addReview = async (event) => {
+    try {
+      await axios.post(`${API_URL}/movies/${singleMovie.id}`, {
+        review: formFields.review,
+        movie_id: singleMovie.id,
+        user_id: 9,
+        rating: formFields.rating,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       <div className="review-form__wrap">
-        <form className="review-form">
+        <form className="review-form" onSubmit={addReview}>
           <label className="review-form__title">Add Your Review</label>
           <textarea
+            onChange={(e) =>
+              setFormFields({ ...formFields, review: e.target.value })
+            }
             className="review-form__input"
             name="Review"
             id="Review"
@@ -25,6 +49,9 @@ function Reviews({ singleMovie }) {
                 className="review-form__rating-dropdown"
                 name="rating"
                 id="rating"
+                onChange={(e) =>
+                  setFormFields({ ...formFields, rating: e.target.value })
+                }
               >
                 <option value="1">1</option>
                 <option value="2">2</option>
