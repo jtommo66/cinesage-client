@@ -65,7 +65,7 @@
     overflow: hidden;
     object-fit: cover;
     height: 25vh;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s infinite;
 
     &:hover {
       animation: pulse 1s infinite;
