@@ -154,8 +154,6 @@ const RouletteWheel = () => {
     console.log("🥳 Enjoy your movie! 🥳");
   };
 
-  // const roulette = useRef();
-
   return (
     <main className="roulette">
       <div className="roulette__filter-wrap">
@@ -188,15 +186,6 @@ const RouletteWheel = () => {
           ))}
         </select>
       </div>
-      {/* <div className="roulette-scroller">
-        {newList.map((movie) => {
-          return (
-            <article key={movie.id} className="roulette-scroller__item">
-              <img className="roulette-scroller__image" src={movie.image} />
-            </article>
-          );
-        })}
-      </div> */}
 
       <div className="roulette__wheel-wrap">
         <>
@@ -207,7 +196,6 @@ const RouletteWheel = () => {
                 prizes={newList}
                 prizeIndex={Math.floor(Math.random() * newList.length - 1)}
                 spinningTime={3}
-                // ref={roulette}
               />
               <button className="roulette__button" onClick={handleStart}>
                 Start

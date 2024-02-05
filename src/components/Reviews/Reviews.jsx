@@ -4,16 +4,30 @@ import React, { useState } from "react";
 import UpVote from "../../assets/images/upvote.svg";
 import DownVote from "../../assets/images/downvote.svg";
 import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Navigate, useNavigate } from "react-router";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 function Reviews({ singleMovie }) {
+  const navigate = useNavigate();
   const [formFields, setFormFields] = useState({
     review: "",
     rating: "",
   });
 
   const addReview = async (event) => {
+    event.preventDefault();
+    sessionStorage.getItem("token");
+
+    if (!sessionStorage.getItem("token")) {
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+      toast.error("You must be logged in to post a review");
+      return;
+    }
     try {
       await axios.post(`${API_URL}/movies/${singleMovie.id}`, {
         review: formFields.review,
@@ -65,11 +79,11 @@ function Reviews({ singleMovie }) {
           </div>
         </form>
       </div>
-      <div>
+      <div className="review__section-wrap">
         {singleMovie.review.map((review, i) => {
           return (
             <article className="review" key={i}>
-              <div className="review__wrap">
+              <div>
                 <div className="review__by-icon-wrap">
                   <p className="review__by">Reviewed By:</p>
                   <div className="review__icon-wrap">

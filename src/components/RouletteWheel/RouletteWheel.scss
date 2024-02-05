@@ -54,34 +54,3 @@
     color: $color-brand-dark;
   }
 }
-
-// @keyframes slide {
-//   from {
-//     transform: translateX(0);
-//   }
-//   to {
-//     transform: translateX(-100%);
-//   }
-// }
-
-// .roulette-scroller {
-//   display: flex;
-//   flex-direction: row;
-//   height: 50vh;
-//   width: 100%;
-//   overflow: hidden;
-//   background-color: $color-brand-light;
-
-//   &__item {
-//     height: 100%;
-//     padding: 0 1rem;
-//     display: flex;
-//     align-items: center;
-//     width: max-content;
-//     animation: 5s slide infinite linear;
-//   }
-
-//   &__image {
-//     height: 80%;
-//   }
-// }
