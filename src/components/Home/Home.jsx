@@ -55,7 +55,7 @@ function Home() {
     return res;
   };
 
-  let scrollList = chooseRandom(movieList, 3);
+  let scrollList = chooseRandom(movieList, 8);
   console.log(scrollList);
 
   return (
@@ -113,10 +113,10 @@ function Home() {
       </div>
       <h3 className="home__description">{singleMovie.synopsis}</h3>
       <div className="movie-scroller">
-        {[...scrollList, ...scrollList].map((movie, i) => {
+        {scrollList.map((movie, i) => {
           return (
             <Link to={`/movies/${movie.id}`}>
-              <article key={i} className="movie-scroller__item">
+              <article key={movie.id} className="movie-scroller__item">
                 <img className="movie-scroller__image" src={movie.image} />
               </article>
             </Link>
