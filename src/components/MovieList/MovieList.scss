@@ -64,7 +64,7 @@
     width: 100%;
     overflow: hidden;
     object-fit: cover;
-    height: 18vh;
+    height: 25vh;
     transition: transform 0.3s ease-in-out;
 
     &:hover {
@@ -72,11 +72,11 @@
     }
 
     @include tablet {
-      height: 33vh;
+      height: 46vh;
     }
 
     @include desktop {
-      height: 75vh;
+      height: 50vh;
     }
   }
 
