@@ -26,7 +26,7 @@ function Register() {
   };
 
   return (
-    <main className="signup-page">
+    <main className="signup__page">
       <form className="signup" onSubmit={handleSubmit}>
         <h1 className="signup__title">Sign up</h1>
         <Input type="text" name="name" label="Name" />
