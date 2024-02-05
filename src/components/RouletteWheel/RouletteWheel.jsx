@@ -1,6 +1,6 @@
 import "./RouletteWheel.scss";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import RoulettePro from "react-roulette-pro";
 import "react-roulette-pro/dist/index.css";
 
@@ -138,6 +138,10 @@ const RouletteWheel = () => {
     };
   });
 
+  if (newList.length % 2 !== 0) {
+    newList.pop();
+  }
+
   console.log(newList);
 
   const winPrizeIndex = 0;
@@ -149,6 +153,8 @@ const RouletteWheel = () => {
   const handlePrizeDefined = () => {
     console.log("🥳 Enjoy your movie! 🥳");
   };
+
+  // const roulette = useRef();
 
   return (
     <main className="roulette">
@@ -201,6 +207,7 @@ const RouletteWheel = () => {
                 prizes={newList}
                 prizeIndex={Math.floor(Math.random() * newList.length - 1)}
                 spinningTime={3}
+                // ref={roulette}
               />
               <button className="roulette__button" onClick={handleStart}>
                 Start
