@@ -3,4 +3,33 @@
 @use "../../styles/partials/breakpoints" as *;
 
 .field {
+  padding-bottom: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  &__label {
+    font-size: 1.5rem;
+    color: $color-brand-dark;
+    width: 35%;
+
+    @include tablet {
+      width: 25%;
+    }
+
+    @include desktop {
+      width: 20%;
+    }
+  }
+
+  &__input {
+    resize: none;
+    background-color: $color-brand-light;
+    border: 1px solid $color-brand-dark;
+    border-radius: 4px;
+    box-shadow: 1px 2px 2px;
+    padding: 1rem;
+    width: 60%;
+    color: $color-brand-dark;
+  }
 }

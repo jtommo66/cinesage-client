@@ -35,6 +35,7 @@ function Reviews({ singleMovie }) {
         user_id: 9,
         rating: formFields.rating,
       });
+      window.location.reload(false);
     } catch (error) {
       console.error(error);
     }
