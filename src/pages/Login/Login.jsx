@@ -13,7 +13,7 @@ const LoginPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(`${API_URL}/login`, {
+      const response = await axios.post(`${API_URL}/login/`, {
         email: event.target.email.value,
         password: event.target.password.value,
       });
@@ -32,7 +32,6 @@ const LoginPage = () => {
         <Input type="text" name="email" label="Email" />
         <Input type="password" name="password" label="Password" />
         <button className="login__button">Log in</button>
-        {error && <div className="login__message">{error}</div>}
       </form>
       <p>
         Need an account? <Link to="/register">Sign up</Link>

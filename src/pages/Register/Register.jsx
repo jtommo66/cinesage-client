@@ -13,7 +13,7 @@ function Register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(`${API_URL}/register`, {
+      await axios.post(`${API_URL}/login/register`, {
         name: event.target.name.value,
         email: event.target.email.value,
         password: event.target.password.value,
@@ -33,7 +33,6 @@ function Register() {
         <Input type="text" name="email" label="Email" />
         <Input type="password" name="password" label="Password" />
         <button className="signup__button">Sign up</button>
-        <p>{error}</p>
       </form>
       <p>
         Have an account? <Link to="/login">Log in</Link>
