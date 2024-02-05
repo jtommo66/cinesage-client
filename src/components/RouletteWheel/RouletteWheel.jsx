@@ -88,7 +88,6 @@ const RouletteWheel = () => {
 
   if (selectedGenreList === null && selectedKeywordList === null) {
     newList = chooseRandom(movieList, 10);
-    console.log(newList);
   }
 
   newList = [
@@ -129,8 +128,6 @@ const RouletteWheel = () => {
     ...newList,
   ];
 
-  console.log(newList);
-
   newList = newList.map((prize, index) => {
     return {
       ...prize,
@@ -141,8 +138,6 @@ const RouletteWheel = () => {
   if (newList.length % 2 !== 0) {
     newList.pop();
   }
-
-  console.log(newList);
 
   const winPrizeIndex = 0;
 

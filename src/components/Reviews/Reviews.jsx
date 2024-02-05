@@ -6,7 +6,8 @@ import DownVote from "../../assets/images/downvote.svg";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Navigate, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
+import { jwtDecode } from "jwt-decode";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -19,7 +20,8 @@ function Reviews({ singleMovie }) {
 
   const addReview = async (event) => {
     event.preventDefault();
-    sessionStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
+    const decoded = jwtDecode(token);
 
     if (!sessionStorage.getItem("token")) {
       setTimeout(() => {
@@ -32,7 +34,7 @@ function Reviews({ singleMovie }) {
       await axios.post(`${API_URL}/movies/${singleMovie.id}`, {
         review: formFields.review,
         movie_id: singleMovie.id,
-        user_id: 9,
+        user_id: decoded.id,
         rating: formFields.rating,
       });
       window.location.reload(false);

@@ -55,9 +55,7 @@ function Home() {
     return res;
   };
 
-  let scrollList = chooseRandom(movieList, 8);
-  console.log(scrollList);
-
+  let scrollList = chooseRandom(movieList, 10);
   return (
     <main className="home">
       <div className="home__text-wrap">
