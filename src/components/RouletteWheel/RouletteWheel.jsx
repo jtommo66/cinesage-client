@@ -1,7 +1,6 @@
 import "./RouletteWheel.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import RoulettePro from "react-roulette-pro";
 import "react-roulette-pro/dist/index.css";
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -12,8 +11,6 @@ const RouletteWheel = () => {
   const [keywordList, setKeywordList] = useState([]);
   const [selectedGenreList, setSelectedGenreList] = useState(null);
   const [selectedKeywordList, setSelectedKeywordList] = useState(null);
-  const [start, setStart] = useState(false);
-
   const [offset, setOffset] = useState(0);
 
   const chooseRandom = (arr, num = 1) => {
@@ -63,7 +60,6 @@ const RouletteWheel = () => {
 
   const changeGenre = (event) => {
     console.log(event.target.value);
-    setStart(false);
     setSelectedGenreList(event.target.value);
   };
 
@@ -130,27 +126,6 @@ const RouletteWheel = () => {
     ...newList,
   ];
 
-  newList = newList.map((prize, index) => {
-    return {
-      ...prize,
-      id: index,
-    };
-  });
-
-  if (newList.length % 2 !== 0) {
-    newList.pop();
-  }
-
-  const winPrizeIndex = 0;
-
-  const handleStart = () => {
-    setStart((prevState) => !prevState);
-  };
-
-  const handlePrizeDefined = () => {
-    console.log("🥳 Enjoy your movie! 🥳");
-  };
-
   return (
     <main className="roulette">
       <div className="roulette__filter-wrap">
@@ -189,10 +164,10 @@ const RouletteWheel = () => {
             className="roulette__image-container"
             style={{ transform: `translateX(-${offset}px)` }}
           >
-            {newList.map((movie) => (
+            {newList.map((movie, i) => (
               <img
                 className="roulette__image"
-                key={movie.id}
+                key={i}
                 src={movie.image}
                 alt={movie.title}
               />
@@ -202,30 +177,12 @@ const RouletteWheel = () => {
         <div className="roulette__button-wrap">
           <button
             className="roulette__button"
-            onClick={() => setOffset((prevOffset) => prevOffset + 9895)}
+            onClick={() => setOffset((prevOffset) => prevOffset + 9890)}
           >
             Next
           </button>
         </div>
       </div>
-
-      {/* <div className="roulette__wheel-wrap">
-        <>
-          {movieList && (
-            <>
-              <RoulettePro
-                start={start}
-                prizes={newList}
-                prizeIndex={Math.floor(Math.random() * newList.length - 1)}
-                spinningTime={3}
-              />
-              <button className="roulette__button" onClick={handleStart}>
-                Start
-              </button>
-            </>
-          )}
-        </>
-      </div> */}
     </main>
   );
 };

@@ -160,15 +160,27 @@
   background: rgba(19, 24, 44, 0.7);
 }
 
-@keyframes slide {
+// @keyframes slide {
+//   0% {
+//     transform: translateX(-200%);
+//   }
+//   50% {
+//     transform: translateX(0%);
+//   }
+//   100% {
+//     transform: translateX(-200%);
+//   }
+// }
+
+@keyframes moveLeftRight {
   0% {
-    transform: translateX(-200%);
+    transform: translateX(-200%); // Start at initial position
   }
   50% {
-    transform: translateX(0%);
+    transform: translateX(0%); // Move left
   }
   100% {
-    transform: translateX(-200%);
+    transform: translateX(-200%); // Move back to initial position
   }
 }
 
@@ -187,7 +199,7 @@
     display: flex;
     align-items: center;
     max-width: $desktop-width;
-    animation: 5s slide infinite linear;
+    animation: moveLeftRight 8s linear infinite;
     max-width: $desktop-width;
   }
 
