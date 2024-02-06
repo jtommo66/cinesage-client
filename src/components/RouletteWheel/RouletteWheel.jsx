@@ -1,6 +1,6 @@
 import "./RouletteWheel.scss";
 import axios from "axios";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import RoulettePro from "react-roulette-pro";
 import "react-roulette-pro/dist/index.css";
 
@@ -13,6 +13,8 @@ const RouletteWheel = () => {
   const [selectedGenreList, setSelectedGenreList] = useState(null);
   const [selectedKeywordList, setSelectedKeywordList] = useState(null);
   const [start, setStart] = useState(false);
+
+  const [offset, setOffset] = useState(0);
 
   const chooseRandom = (arr, num = 1) => {
     const res = [];
@@ -181,8 +183,33 @@ const RouletteWheel = () => {
           ))}
         </select>
       </div>
+      <div className="roulette">
+        <div className="roulette__slider">
+          <div
+            className="roulette__image-container"
+            style={{ transform: `translateX(-${offset}px)` }}
+          >
+            {newList.map((movie) => (
+              <img
+                className="roulette__image"
+                key={movie.id}
+                src={movie.image}
+                alt={movie.title}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="roulette__button-wrap">
+          <button
+            className="roulette__button"
+            onClick={() => setOffset((prevOffset) => prevOffset + 10000)}
+          >
+            Next
+          </button>
+        </div>
+      </div>
 
-      <div className="roulette__wheel-wrap">
+      {/* <div className="roulette__wheel-wrap">
         <>
           {movieList && (
             <>
@@ -198,7 +225,7 @@ const RouletteWheel = () => {
             </>
           )}
         </>
-      </div>
+      </div> */}
     </main>
   );
 };
