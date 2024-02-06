@@ -114,9 +114,11 @@ function Home() {
         {scrollList.map((movie, i) => {
           return (
             <Link to={`/movies/${movie.id}`}>
-              <article key={movie.id} className="movie-scroller__item">
-                <img className="movie-scroller__image" src={movie.image} />
-              </article>
+              <div key={movie.id} className="movie-scroller__item-wrap">
+                <article className="movie-scroller__item">
+                  <img className="movie-scroller__image" src={movie.image} />
+                </article>
+              </div>
             </Link>
           );
         })}
