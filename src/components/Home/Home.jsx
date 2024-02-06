@@ -36,7 +36,7 @@ function Home() {
   }, []);
 
   if (!singleMovie) {
-    return <p>Loading...</p>;
+    return <p>Loading Movie...</p>;
   }
 
   if (!movieList) {
@@ -111,10 +111,14 @@ function Home() {
       </div>
       <h3 className="home__description">{singleMovie.synopsis}</h3>
       <div className="movie-scroller">
-        {scrollList.map((movie, i) => {
-          return (
-            <Link key={movie.id} to={`/movies/${movie.id}`}>
-              <div className="movie-scroller__item-wrap">
+        <div className="movie-scroller__item-wrap">
+          {scrollList.map((movie, i) => {
+            return (
+              <Link
+                className="movie-scroller__link"
+                key={movie.id}
+                to={`/movies/${movie.id}`}
+              >
                 <article className="movie-scroller__item">
                   <img
                     className="movie-scroller__image"
@@ -122,10 +126,11 @@ function Home() {
                     alt={movie.title}
                   />
                 </article>
-              </div>
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
+        </div>
+        ;
       </div>
     </main>
   );

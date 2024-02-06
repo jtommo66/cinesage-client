@@ -147,7 +147,8 @@
   width: 100%;
 
   &__window {
-    width: 100%;
+    width: 55vw;
+    height: 35vh;
   }
 
   &__window-large {
@@ -162,13 +163,13 @@
 
 @keyframes moveLeftRight {
   0% {
-    transform: translateX(-200%);
+    transform: translateX(-20%);
   }
   50% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-200%);
+    transform: translateX(-20%);
   }
 }
 
@@ -180,7 +181,6 @@
   overflow: hidden;
   background-color: $color-brand-light;
   margin: auto;
-  gap: 1rem;
 
   &__item {
     height: 100%;
@@ -190,8 +190,11 @@
   }
 
   &__item-wrap {
-    animation: moveLeftRight 8s linear infinite;
+    gap: 1rem;
+    display: flex;
+    flex-direction: row;
     height: 100%;
+    animation: moveLeftRight 10s linear infinite;
   }
 
   &__image {
