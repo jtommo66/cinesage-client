@@ -180,13 +180,12 @@
   overflow: hidden;
   background-color: $color-brand-light;
   margin: auto;
+  gap: 1rem;
 
   &__item {
     height: 100%;
-    padding: 0 1rem;
     display: flex;
     align-items: center;
-    max-width: $desktop-width;
     max-width: $desktop-width;
   }
 
