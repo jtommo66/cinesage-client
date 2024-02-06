@@ -1,7 +1,9 @@
 import "./RouletteWheel.scss";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "react-roulette-pro/dist/index.css";
+import RouletteSelector from "../../assets/images/RouletteSelector.svg";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -159,25 +161,36 @@ const RouletteWheel = () => {
         </select>
       </div>
       <div className="roulette">
+        <div className="roulette__selector-wrap">
+          <img src={RouletteSelector} className="roulette__selector" />
+        </div>
         <div className="roulette__slider">
           <div
             className="roulette__image-container"
             style={{ transform: `translateX(-${offset}px)` }}
           >
             {newList.map((movie, i) => (
-              <img
-                className="roulette__image"
-                key={i}
-                src={movie.image}
-                alt={movie.title}
-              />
+              <Link className="roulette__image-link" to={`/movies/${movie.id}`}>
+                <img
+                  className="roulette__image"
+                  key={i}
+                  src={movie.image}
+                  alt={movie.title}
+                />
+              </Link>
             ))}
           </div>
+        </div>
+        <div className="roulette__selector-wrap">
+          <img
+            src={RouletteSelector}
+            className="roulette__selector roulette__selector--reversed"
+          />
         </div>
         <div className="roulette__button-wrap">
           <button
             className="roulette__button"
-            onClick={() => setOffset((prevOffset) => prevOffset + 9890)}
+            onClick={() => setOffset((prevOffset) => prevOffset + 9895)}
           >
             Next
           </button>

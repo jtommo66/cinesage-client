@@ -39,6 +39,49 @@
     overflow-x: hidden;
     position: relative;
     background-color: $color-brand-light;
+
+    @include tablet {
+      &:before {
+        position: absolute;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        content: "";
+        z-index: 2;
+        left: 0;
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 0),
+          $color-brand-light
+        );
+      }
+      &:after {
+        position: absolute;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        content: "";
+        z-index: 2;
+        right: 0;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0),
+          $color-brand-light
+        );
+      }
+    }
+  }
+
+  &__selector {
+    width: 3rem;
+    &--reversed {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__selector-wrap {
+    display: flex;
+    justify-content: space-evenly;
   }
 
   &__image-container {
@@ -46,12 +89,12 @@
     transition: transform 4s ease;
     width: 60vw;
     height: 40vh;
+    margin: 2rem 0;
   }
 
   &__image {
-    width: 100%;
-    height: auto;
-    margin: 0.5rem;
+    height: 100%;
+    margin: 0 0.5rem;
   }
 
   &__button-wrap {
@@ -61,7 +104,7 @@
   }
 
   &__button {
-    transform: translateY(-50%);
+    transform: translateY(-45%);
     display: flex;
     margin: 4rem;
     width: 30%;
