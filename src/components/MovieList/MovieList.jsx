@@ -9,8 +9,8 @@ function MovieList() {
   const [movieList, setMovieList] = useState(null);
   const [genreList, setGenreList] = useState(null);
   const [keywordList, setKeywordList] = useState(null);
-  const [selectedGenreList, setSelectedGenreList] = useState("null");
-  const [selectedKeywordList, setSelectedKeywordList] = useState("null");
+  const [selectedGenreList, setSelectedGenreList] = useState("");
+  const [selectedKeywordList, setSelectedKeywordList] = useState("");
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -93,7 +93,7 @@ function MovieList() {
           id="genres"
           name="genres"
         >
-          <option key="blank-select" value="null">
+          <option key="blank-select" value="">
             Select Genre
           </option>
           {genreList.map((genre) => (
@@ -108,7 +108,7 @@ function MovieList() {
           id="keywords"
           name="keywords"
         >
-          <option key="blank-select" value="null">
+          <option key="blank-select" value="">
             Select Keyword
           </option>
           {keywordList.map((keyword) => (
@@ -154,10 +154,7 @@ function MovieList() {
               </div>
             </article>
           );
-        } else if (
-          selectedGenreList === "null" &&
-          selectedKeywordList === "null"
-        ) {
+        } else if (selectedGenreList === "" && selectedKeywordList === "") {
           return (
             <article key={movie.id} className="movie-list__movie">
               <div>

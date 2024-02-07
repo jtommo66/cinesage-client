@@ -11,8 +11,8 @@ const RouletteWheel = () => {
   const [movieList, setMovieList] = useState(null);
   const [genreList, setGenreList] = useState([]);
   const [keywordList, setKeywordList] = useState([]);
-  const [selectedGenreList, setSelectedGenreList] = useState(null);
-  const [selectedKeywordList, setSelectedKeywordList] = useState(null);
+  const [selectedGenreList, setSelectedGenreList] = useState("");
+  const [selectedKeywordList, setSelectedKeywordList] = useState("");
   const [offset, setOffset] = useState(0);
 
   const chooseRandom = (arr, num = 1) => {
@@ -86,7 +86,7 @@ const RouletteWheel = () => {
     });
   }
 
-  if (selectedGenreList === null && selectedKeywordList === null) {
+  if (selectedGenreList === "" && selectedKeywordList === "") {
     newList = chooseRandom(movieList, 10);
   }
 
@@ -137,7 +137,7 @@ const RouletteWheel = () => {
           id="genres"
           name="genres"
         >
-          <option key="blank-select" value="null">
+          <option key="blank-select" value="">
             Select Genre
           </option>
           {genreList.map((genre) => (
@@ -152,7 +152,9 @@ const RouletteWheel = () => {
           id="keywords"
           name="keywords"
         >
-          <option key="blank-select">Select Keyword</option>
+          <option value="" key="blank-select">
+            Select Keyword
+          </option>
           {keywordList.map((keyword) => (
             <option key={keyword.id} value={keyword.keyword}>
               {keyword.keyword}
@@ -170,7 +172,11 @@ const RouletteWheel = () => {
             style={{ transform: `translateX(-${offset}px)` }}
           >
             {newList.map((movie, i) => (
-              <Link className="roulette__image-link" to={`/movies/${movie.id}`}>
+              <Link
+                key={i}
+                className="roulette__image-link"
+                to={`/movies/${movie.id}`}
+              >
                 <img
                   className="roulette__image"
                   key={i}
