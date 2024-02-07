@@ -51,6 +51,7 @@ function SingleMovie() {
               })}
             </div>
             <div className="single-movie__genre-wrap">
+              <h3>Genres</h3>
               {singleMovie.genre.map((genre, i) => {
                 return (
                   <h3 key={i} className="single-movie__genre">

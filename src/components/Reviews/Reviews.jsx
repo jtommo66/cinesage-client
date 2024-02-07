@@ -21,15 +21,17 @@ function Reviews({ singleMovie }) {
   const addReview = async (event) => {
     event.preventDefault();
     const token = sessionStorage.getItem("token");
-    const decoded = jwtDecode(token);
 
-    if (!sessionStorage.getItem("token")) {
+    if (!token) {
+      toast.error("You must be logged in to post a review");
       setTimeout(() => {
         navigate("/login");
       }, 3000);
-      toast.error("You must be logged in to post a review");
       return;
     }
+
+    const decoded = jwtDecode(token);
+
     try {
       await axios.post(`${API_URL}/movies/${singleMovie.id}`, {
         review: formFields.review,
@@ -37,6 +39,7 @@ function Reviews({ singleMovie }) {
         user_id: decoded.id,
         rating: formFields.rating,
       });
+
       window.location.reload(false);
     } catch (error) {
       console.error(error);

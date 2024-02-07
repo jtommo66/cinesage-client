@@ -76,13 +76,17 @@ function Home() {
             <div className="home__director-wrap">
               {singleMovie.director.map((director, i) => {
                 return (
-                  <h3 key={i} className="home__director">
-                    {director}
-                  </h3>
+                  <>
+                    <h3>Directed by</h3>
+                    <h3 key={i} className="home__director">
+                      {director}
+                    </h3>
+                  </>
                 );
               })}
             </div>
             <div className="home__genre-wrap">
+              <h3>Genres</h3>
               {singleMovie.genre.map((genre, i) => {
                 return (
                   <h3 key={i} className="home__genre">
