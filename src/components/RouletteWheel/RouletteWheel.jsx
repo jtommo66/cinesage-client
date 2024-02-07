@@ -2,7 +2,6 @@ import "./RouletteWheel.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import "react-roulette-pro/dist/index.css";
 import RouletteSelector from "../../assets/images/RouletteSelector.svg";
 
 const API_URL = process.env.REACT_APP_API_URL;
