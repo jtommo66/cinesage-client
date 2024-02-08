@@ -77,10 +77,8 @@ function Home() {
               {singleMovie.director.map((director, i) => {
                 return (
                   <>
-                    <h3>Directed by</h3>
-                    <h3 key={i} className="home__director">
-                      {director}
-                    </h3>
+                    <h3 key={i}> Directed by</h3>
+                    <h3 className="home__director">{director}</h3>
                   </>
                 );
               })}
