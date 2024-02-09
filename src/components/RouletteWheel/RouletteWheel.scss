@@ -5,11 +5,6 @@
 .roulette {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  //remove ^
-
-  height: 75vh;
-  // remove ^
 
   &__filter-wrap {
     width: 100%;
@@ -25,8 +20,6 @@
   }
 
   &__filter-option {
-    height: 100%;
-    //remove ^
     margin-bottom: 1rem 0;
     width: 8rem;
     text-align: center;
@@ -42,8 +35,7 @@
   &__slider {
     display: flex;
     width: 100%;
-    height: 1200vh;
-    // remove ^
+
     overflow-x: hidden;
     position: relative;
     background-color: $color-brand-light;
@@ -116,8 +108,6 @@
     display: flex;
     margin: 4rem;
     width: 30%;
-    height: 40%;
-    // remove^
     align-items: center;
     justify-content: space-evenly;
     border-radius: 4px;
