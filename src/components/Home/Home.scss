@@ -173,6 +173,18 @@
   }
 }
 
+@-webkit-keyframes moveLeftRight {
+  0% {
+    transform: translateX(-20%);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-20%);
+  }
+}
+
 .movie-scroller {
   display: flex;
   flex-direction: row;
