@@ -197,7 +197,7 @@ const RouletteWheel = () => {
             className="roulette__button"
             onClick={() => setOffset((prevOffset) => prevOffset + 9895)}
           >
-            Next
+            SPIN
           </button>
         </div>
       </div>
