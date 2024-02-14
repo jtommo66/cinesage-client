@@ -1,12 +1,12 @@
 import "./Login.scss";
-import Input from "../../components/Input/Input";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import Input from "../../components/Input/Input";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
 
@@ -18,7 +18,7 @@ const LoginPage = () => {
         password: event.target.password.value,
       });
       sessionStorage.setItem("token", response.data.token);
-
+      onLogin();
       navigate("/");
     } catch (error) {
       setError(error.response.data);
